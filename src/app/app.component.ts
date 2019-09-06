@@ -12,6 +12,8 @@ export class AppComponent implements OnInit{
 
   title = 'app con coneccion a angular';
 
+  constructor(private CognitoAouthService: CognitoAouthService) {}
+
   ngOnInit(): void {
     this.CognitoAouthService.getJwtCognito().then(jwtCognito => this.jwtCognito = jwtCognito);
   }

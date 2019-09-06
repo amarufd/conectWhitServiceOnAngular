@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JWTCOGNITO } from './mock-cognito-aouth'
+import { JwtCognito } from './jwt-cognito';
 
 
 @Injectable({
@@ -7,5 +8,8 @@ import { JWTCOGNITO } from './mock-cognito-aouth'
 })
 
 export class CognitoAouthService {
-  getJwtCognito() { return JWTCOGNITO; }
+
+  constructor() {}
+
+  getJwtCognito(): Promise<JwtCognito>{ return Promise.resolve(JWTCOGNITO); }
 }
