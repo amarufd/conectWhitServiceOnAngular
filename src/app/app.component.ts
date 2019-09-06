@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { JwtCognito } from './cognito/jwt-cognito';
-import { CognitoAouthService } from './cognito/cognito-aouth.service'
+import { CognitoAouthService } from './cognito/cognito-aouth.service';
 
 @Component({
   selector: 'app-root',
