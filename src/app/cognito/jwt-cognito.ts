@@ -1,4 +1,4 @@
-export class JwtCognito {
+export interface JwtCognito {
     AccessToken: string;
     ExpiresIn: number;
     TokenType: string;

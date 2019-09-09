@@ -1,6 +1,6 @@
 {
-	"/toqeml14rd.execute-api.us-east-1.amazonaws.com/*": {
-		"target": "http://localhost:4200",
+	"/dev/*": {
+		"target": "",
 		"secure": false,
 		"logLevel": "debug",
 		"changeOrigin": true

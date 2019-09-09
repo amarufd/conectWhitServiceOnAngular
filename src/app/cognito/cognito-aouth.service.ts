@@ -1,7 +1,13 @@
+import { Observable, from } from 'rxjs';
+//import { catchError } from 'rxjs/operators';
+
 import { Injectable } from '@angular/core';
-import { JWTCOGNITO } from './mock-cognito-aouth'
-import { JwtCognito } from './jwt-cognito';
+import { JwtCognito } from "./jwt-cognito";
 import {HttpHeaders,HttpClient} from "@angular/common/http";
+
+import { environment } from '../../environments/environment';
+
+//import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 
 @Injectable({
@@ -12,27 +18,25 @@ export class CognitoAouthService {
 
   constructor(private http:HttpClient) {}
   
-  getJwtCognito(): Promise<JwtCognito>{
-    
-    console.log("tonteras")
+  getJwtCognito(): Observable<JwtCognito>{
 
     const headers = new HttpHeaders().set("Content-Type", "application/json")
-      .set("x-api-key", "")
-      .set('Access-Control-Allow-Origin', '*');
-      
+      .set("x-api-key", environment.apiKey);
+    
+    
     let body = {
-      "username": "",
-      "password": "",
-      "userPoolId": ""
+      "username": environment.username,
+      "password": environment.password,
+      "userPoolId": environment.userPoolId
     };
 
-    this.http.post("",body,{headers})
-    .subscribe(data  => {
-      console.log("POST Request is successful ", data);
-    },error  => {
-      console.log("Error", error);
-    });
+    var resp = this.http.post<JwtCognito>(environment.endPoint,body,{headers})
+    .pipe();
 
-    return Promise.resolve(JWTCOGNITO); 
+    return resp;
+
+    
+
+    //return Promise.resolve(JWTCOGNITO); 
   }
 }
